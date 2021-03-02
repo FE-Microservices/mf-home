@@ -1,9 +1,11 @@
 {
-  "name": "delivery",
+  "name": "home",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "react": "^16.13.0",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^16.13.0"
   },
   "devDependencies": {
@@ -11,15 +13,18 @@
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",
-    "html-webpack-plugin": "^4.5.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.2.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
     "style-loader": "^1.2.1",
-    "webpack": "^5.11.0",
+    "webpack": "^5.24.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "start": "webpack-dev-server --open --mode development --liveReload",
     "build": "webpack --mode production",
-    "serve": "serve dist -p 3003"
+    "serve": "serve dist -p 3000"
   }
 }

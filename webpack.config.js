@@ -23,8 +23,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       },
       {
         test: /\.(js|jsx)$/,
@@ -38,23 +53,13 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "delivery",
-      library: { type: "var", name: "delivery" },
+      name: "home",
+      library: { type: "var", name: "home" },
       filename: "remoteEntry.js",
       exposes: {
         './App': "./src/App",
       },
-      // This library will be imported if the consumer app does not have it.
-      /*
-      shared: {
-        react: {
-          eager: true,
-        },
-        'react-dom': {
-          eager: true,
-        }
-      }
-      */
+      shared: ["react-bootstrap", "react", "react-dom"]
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
@@ -62,6 +67,7 @@ module.exports = {
   ],
 
   devServer: {
+    historyApiFallback: true,
     port: 3001,
   },
 };
