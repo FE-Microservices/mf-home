@@ -7,3 +7,5 @@ It can be executed alone or as a part of the orchestrator.
 ### To start:
 
 `yarn start`
+
+The application should be available on port `3001`: 
